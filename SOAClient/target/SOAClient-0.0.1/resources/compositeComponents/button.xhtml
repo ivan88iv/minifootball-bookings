@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<composite:interface>
+		<composite:attribute name="text" required="true" />
+		<composite:attribute name="action"
+			method-signature="java.lang.String action()"  
+			default="#{buttonDefault.defaultAction}"/>
+
+		<composite:attribute name="styleClass" />
+		
+		<composite:attribute name="style" />
+		
+		<composite:attribute name="onclick"/>
+
+		<composite:attribute name="disabled" default="false"/>
+
+		<composite:attribute name="immediate" default="false"/>
+
+		<composite:clientBehavior name="action" event="action" targets="#{cc.clientId}:button"/>
+	</composite:interface>
+
+	<composite:implementation>
+		<h:outputStylesheet library="css" name="button.css"/>
+		
+		<h:commandLink id="button" action="#{cc.attrs.action}"
+			disabled="#{cc.attrs.disabled}" immediate="#{cc.attrs.immediate}"
+			onclick="#{cc.attrs.onclick}"
+			styleClass="button #{cc.attrs.styleClass}"
+			style="#{cc.attrs.style}" value="#{cc.attrs.text}">
+		</h:commandLink>
+	</composite:implementation>
+</h:body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<ui:composition template="generalLayout.xhtml">
+		<ui:param name="headerSubMsg" value="#{userAccount.greeting}"/>
+		
+		<ui:define name="headerButton">
+			<h:link value="#{msgs['home.layout.login']}" outcome="#{msgs['home.layout.login.navigation']}"
+				rendered="#{!userAccount.userInSystem}"/>
+			<h:form>
+				<h:commandLink value="#{msgs['login.logout']}" action="#{login.logout}"
+					rendered="#{userAccount.userInSystem}"/>
+			</h:form>
+		</ui:define>
+
+		<ui:define name="content">
+			<h:outputStylesheet name="homeLayout.css" library="css"/>
+			
+			<h:panelGroup layout="block" styleClass="home-layout-hdr">
+				<h:outputText value="#{homeLayoutHdr}"/>
+			</h:panelGroup>
+			<ui:insert name="homeContent">
+			</ui:insert>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:comp="http://java.sun.com/jsf/composite/compositeComponents"
+	xmlns:rich="http://richfaces.org/rich">
+
+<h:body>
+	<ui:composition template="templates/homeLayout.xhtml">
+		<ui:param name="homeLayoutHdr" value="#{msgs['home.hdr']}"/>
+		
+		<ui:define name="title">
+			<title>#{msgs['home.title']}</title>
+		</ui:define>
+	
+		<ui:define name="homeContent">
+			<f:event type="preRenderView" listener="#{home.loadCountries}" />
+			<h:outputStylesheet name="home.css" library="css"/>
+			
+			<h:messages layout="table" styleClass="global-messages"/>
+			
+			<h:form id="playgroundForm">
+				<h:panelGroup layout="block" styleClass="home-selection-area">
+					<h:panelGroup layout="block" styleClass="select-holder">
+						<rich:select id="country-select"
+							value="#{home.selectedCountry}"
+							required="true" requiredMessage="#{msgs['home.country.required']}"
+							listHeight="150" listWidth="142" 
+							defaultLabel="#{msgs['home.select.country']}">
+							<f:ajax event="selectitem" execute="playgroundForm:country-select"
+								render="playgroundForm:city-select" 
+								listener="#{home.loadCities}"/>
+							<f:selectItems value="#{home.countriesToSelectFrom}"/>
+						</rich:select>
+					</h:panelGroup>
+					
+					<h:panelGroup layout="block" styleClass="select-holder">
+						<rich:select id="city-select"
+							value="#{home.selectedCity}"
+							required="true" requiredMessage="#{msgs['home.city.required']}"
+							listHeight="150" listWidth="142"
+							defaultLabel="#{msgs['home.select.city']}">
+							<f:ajax event="selectitem" execute="playgroundForm:city-select"
+								render="playgroundForm:playground-select" 
+								listener="#{home.loadPlaygrounds}"/>
+							<f:selectItems value="#{home.citiesToSelectFrom}"/>
+						</rich:select>
+					</h:panelGroup>
+							
+					<h:panelGroup layout="block" styleClass="select-holder">
+						<rich:select id="playground-select"
+							value="#{home.selectedPlaygroundId}"
+							required="true" requiredMessage="#{msgs['home.playground.required']}"
+							listHeight="150" listWidth="142"
+							defaultLabel="#{msgs['home.select.playground']}">
+							<f:ajax event="selectitem" render="playground-info-holder"
+								listener="#{home.loadPlaygroundInfo}"/>
+							<f:selectItems value="#{home.playgroundsToSelectFrom}"/>
+						</rich:select>
+					</h:panelGroup>
+								
+					<h:panelGroup layout="block" styleClass="stream-adjust"></h:panelGroup>
+				</h:panelGroup>
+				
+				<h:panelGroup id="playground-info-holder" layout="block" 
+					styleClass="playground-info-container">
+					<h:panelGrid columns="4" columnClasses="firstCol,secondCol,thirdCol,fourthCol">
+						<h:outputLabel for="name" value="#{msgs['home.name']}"/>
+						<h:inputText id="name" disabled="true" 
+							value="#{home.selectedPlayground.name}"/>
+						
+						<h:outputLabel for="address" value="#{msgs['home.address']}"/>
+						<h:inputTextarea id="address" disabled="true" 
+							value="#{home.selectedPlayground.address}"/>
+						
+						<h:outputLabel for="phone" value="#{msgs['home.phone']}"/>
+						<h:inputText id="phone" disabled="true" 
+							value="#{home.selectedPlayground.telephone}"/>
+						
+						<h:outputLabel for="email" value="#{msgs['home.email']}"/>
+						<h:inputText id="email" disabled="true" 
+							value="#{home.selectedPlayground.email}"/>
+						
+						<h:outputLabel for="width" value="#{msgs['home.width']}"/>
+						<h:inputText id="width" disabled="true" 
+							value="#{home.selectedPlayground.width}"/>
+						
+						<h:outputLabel for="length" value="#{msgs['home.length']}"/>
+						<h:inputText id="length" disabled="true"
+							value="#{home.selectedPlayground.length}"/>
+						
+						<h:outputLabel for="flooring" value="#{msgs['home.flooring']}"/>
+						<h:inputText id="flooring" disabled="true" 
+							value="#{home.selectedPlayground.flooring}"/>
+						
+						<h:outputLabel for="city" value="#{msgs['home.city']}"/>
+						<h:inputText id="city" 
+							disabled="true" value="#{home.selectedPlayground.city}"/>
+						
+						<h:outputLabel for="country" value="#{msgs['home.country']}"/>
+						<h:inputText id="country" disabled="true" 
+							value="#{home.selectedPlayground.country}"/>
+						
+						<h:outputLabel for="companyName" value="#{msgs['home.company.name']}"/>
+						<h:inputText id="companyName" disabled="true" 
+							value="#{home.selectedPlayground.company.name}"/>
+						
+						<h:outputLabel for="companyAddress" 
+							value="#{msgs['home.company.address']}"/>
+						<h:inputTextarea id="companyAddress" disabled="true" 
+							value="#{home.selectedPlayground.company.address}"/>
+						
+						<h:outputLabel for="companyEmail" value="#{msgs['home.company.email']}"/>
+						<h:inputText id="companyEmail" disabled="true" 
+							value="#{home.selectedPlayground.company.email}"/>
+						
+						<h:outputLabel for="companyPhone" value="#{msgs['home.company.phone']}"/>
+						<h:inputText id="companyPhone" disabled="true" 
+							value="#{home.selectedPlayground.company.telephone}"/>
+						
+						<h:outputLabel for="companyCity" value="#{msgs['home.company.city']}"/>
+						<h:inputText id="companyCity" disabled="true" 
+							value="#{home.selectedPlayground.company.city}"/>
+						
+						<h:outputLabel for="companyCountry" value="#{msgs['home.company.country']}"/>
+						<h:inputText id="companyCountry" disabled="true" 
+							value="#{home.selectedPlayground.company.country}"/>
+						
+					</h:panelGrid>
+				</h:panelGroup>
+				
+				<h:panelGroup layout="block"
+					styleClass="view-schedule-button-holder">
+					<comp:button text="#{msgs['home.view.schedule']}" 
+						action="#{home.selectPlayground}"/>
+				</h:panelGroup>
+			</h:form>
+			
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

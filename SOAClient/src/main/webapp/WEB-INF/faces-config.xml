@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+			http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0">
+
+	<application>
+		<resource-bundle>
+			<base-name>com.futsall.messages</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+
+		<resource-bundle>
+			<base-name>com.futsall.configuration</base-name>
+			<var>config</var>
+		</resource-bundle>
+	</application>
+	
+	
+	<managed-bean>
+	    <managed-bean-name>login</managed-bean-name>
+	    <managed-bean-class>com.futsall.login.LoginBean</managed-bean-class>
+	    <managed-bean-scope>request</managed-bean-scope>
+	    
+	    <managed-property>
+	        <property-name>userAccount</property-name>
+	        <value>#{userAccount}</value>
+	    </managed-property>
+	</managed-bean>
+	
+	<managed-bean>
+	    <managed-bean-name>userAccount</managed-bean-name>
+	    <managed-bean-class>com.futsall.user.UserAccount</managed-bean-class>
+	    <managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+	    <managed-bean-name>register</managed-bean-name>
+	    <managed-bean-class>com.futsall.register.RegisterBean</managed-bean-class>
+	    <managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+	    <managed-bean-name>home</managed-bean-name>
+	    <managed-bean-class>com.futsall.home.HomeBean</managed-bean-class>
+	    <managed-bean-scope>session</managed-bean-scope>
+	    
+	    <managed-property>
+	        <property-name>userAccount</property-name>
+			<value>#{userAccount}</value>	        
+	    </managed-property>
+	</managed-bean>
+	
+	<managed-bean>
+	    <managed-bean-name>schedule</managed-bean-name>
+	    <managed-bean-class>com.futsall.schedule.ScheduleBean</managed-bean-class>
+	    <managed-bean-scope>view</managed-bean-scope>
+	    
+	    <managed-property>
+	        <property-name>selectedPlayground</property-name>
+			<value>#{home.selectedPlayground}</value>	        
+	    </managed-property>
+	</managed-bean>
+	
+	<navigation-rule>
+	    <from-view-id>/login.xhtml</from-view-id>
+	    <navigation-case>
+	        <from-outcome>success</from-outcome>
+	        <to-view-id>/home.xhtml</to-view-id>
+	    </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	    <from-view-id>/register.xhtml</from-view-id>
+	    <navigation-case>
+	        <from-outcome>success</from-outcome>
+	        <to-view-id>/home.xhtml</to-view-id>
+	    </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	    <from-view-id>/home.xhtml</from-view-id>
+	    <navigation-case>
+	        <from-outcome>login</from-outcome>
+	        <to-view-id>/login.xhtml</to-view-id>
+	    </navigation-case>
+	    <navigation-case>
+	        <from-outcome>schedule</from-outcome>
+	        <to-view-id>/schedule.xhtml</to-view-id>
+	    </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	    <from-view-id>/schedule.xhtml</from-view-id>
+	    <navigation-case>
+	        <from-outcome>success</from-outcome>
+	        <to-view-id>/home.xhtml</to-view-id>
+	    </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	    <from-view-id>*</from-view-id>
+	    <navigation-case>
+	        <from-outcome>logout</from-outcome>
+	        <to-view-id>/login.xhtml</to-view-id>
+	    </navigation-case>
+	</navigation-rule>
+</faces-config>	

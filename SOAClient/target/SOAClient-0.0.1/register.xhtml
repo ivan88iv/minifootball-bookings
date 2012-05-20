@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+ 	xmlns:comp="http://java.sun.com/jsf/composite/compositeComponents">
+
+<h:body>
+	<ui:composition template="templates/loginLayout.xhtml">
+		<ui:param name="headerTxt" value="#{msgs['register.header']}"/>
+		<ui:param name="headerSubMsg" value=""/>
+		
+		<ui:define name="title">
+			<title>#{msgs['register.title']}</title>
+		</ui:define>
+		
+		<ui:define name="headerButton">
+			<h:link value="#{msgs['register.login']}" outcome="#{msgs['register.login.navigation']}"
+				rendered="#{!userAccount.userInSystem}"/>
+			
+			<h:form>
+				<h:commandLink value="#{msgs['login.logout']}" action="#{login.logout}"
+					rendered="#{userAccount.userInSystem}"/>
+			</h:form>
+		</ui:define>
+		
+		<ui:define name="enterSystemInfo">
+			<h:outputStylesheet name="register.css" library="css"/>
+		
+			<h:panelGroup layout="block" styleClass="info-holder">
+				<h:outputLabel value="#{msgs['register.user']}" />
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:panelGroup layout="block">
+					<h:inputText id="username" value="#{register.username}"
+						required="true"
+						requiredMessage="#{msgs['register.required.username']}" />
+				</h:panelGroup>
+
+				<h:panelGroup layout="block" styleClass="local-validation-message">
+					<h:message for="username"/>
+				</h:panelGroup>
+			</h:panelGroup>
+
+			<h:panelGroup layout="block" styleClass="info-holder">
+				<h:outputLabel value="#{msgs['register.password']}" />
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:panelGroup layout="block">
+					<h:inputSecret id="password" value="#{register.password}"
+						required="true"
+						requiredMessage="#{msgs['register.required.password']}" />
+				</h:panelGroup>
+
+				<h:panelGroup layout="block" styleClass="local-validation-message" >
+					<h:message for="password"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="info-holder">
+				<h:outputLabel value="#{msgs['register.confpassword']}" />
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:panelGroup layout="block">
+					<h:inputSecret id="confpassword" value="#{register.confPassword}"
+						required="true"
+						requiredMessage="#{msgs['register.required.confpassword']}" />
+				</h:panelGroup>
+
+				<h:panelGroup layout="block" styleClass="local-validation-message" >
+					<h:message for="confpassword"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="info-holder">
+				<h:outputLabel value="#{msgs['register.name']}" />
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:panelGroup layout="block">
+					<h:inputText id="name" value="#{register.firstName}"
+						required="true"
+						requiredMessage="#{msgs['register.required.name']}" />
+				</h:panelGroup>
+
+				<h:panelGroup layout="block" styleClass="local-validation-message" >
+					<h:message for="name"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="info-holder">
+				<h:outputLabel value="#{msgs['register.family']}" />
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:panelGroup layout="block">
+					<h:inputText id="family" value="#{register.lastName}"
+						required="true"
+						requiredMessage="#{msgs['register.required.family']}" />
+				</h:panelGroup>
+
+				<h:panelGroup layout="block" styleClass="local-validation-message" >
+					<h:message for="family"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="info-holder">
+				<h:outputLabel value="#{msgs['register.phone']}" />
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:panelGroup layout="block">
+					<h:inputText id="phone" value="#{register.telephone}" 
+						validatorMessage="#{msgs['register.phone.valid']}">
+						<f:validateRegex pattern="^\(\+([0-9]*)\)[0-9]+$"/>
+					</h:inputText>
+				</h:panelGroup>
+
+				<h:panelGroup layout="block" styleClass="local-validation-message" >
+					<h:message for="phone"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="info-holder">
+				<h:outputLabel value="#{msgs['register.email']}" />
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:panelGroup layout="block">
+					<h:inputText id="email" value="#{register.email}"
+						required="true"
+						requiredMessage="#{msgs['register.required.email']}" 
+						validatorMessage="#{msgs['register.email.valid']}">
+						<f:validateRegex pattern="^(\w)+@(\w)+(\.)(\w)+$"/>
+					</h:inputText>
+				</h:panelGroup>
+
+				<h:panelGroup layout="block" styleClass="local-validation-message" >
+					<h:message for="email"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="info-holder">
+				<h:outputLabel value="#{msgs['register.address']}" />
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:panelGroup layout="block">
+					<h:inputTextarea id="address" value="#{register.address}" />
+				</h:panelGroup>
+
+				<h:panelGroup layout="block" styleClass="local-validation-message" >
+					<h:message for="address"/>
+				</h:panelGroup>
+			</h:panelGroup>
+		</ui:define>
+		
+		<ui:define name="submitButton">
+			<comp:button text="#{msgs['register.register']}" action="#{register.register}"/>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

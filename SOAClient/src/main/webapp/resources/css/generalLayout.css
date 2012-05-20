@@ -1,0 +1,102 @@
+* {
+	margin : 0px;
+	padding : 0px;
+	font-size: 16px;
+}
+
+a {
+	text-decoration:  none;
+	color:black;
+}
+
+a:hover,a:visited {
+	color: black;
+}
+
+body {
+	background: url(img/blue_sky_green_grass-wide.jpg) no-repeat;
+	padding: 10px 0px;
+}
+
+.stream-adjust{
+	clear: both;
+}
+
+.header-container {
+	background-color: #AFFEBB;
+    border: 3px solid black;
+    width: 400px;
+   	border-radius: 10px;
+    text-align: center;
+    width: 653px;
+}
+
+.header-txt-container{
+    padding: 21px 0;
+}
+
+.header-txt-container a,.header-txt-container span {
+	text-decoration:none;
+	font-size:24px;
+}
+
+.content-holder{
+	margin-top: 115px;
+    width: 400px;
+    background-color: #AFFEBB;
+    border: 3px solid black;
+   	border-radius: 10px;
+    text-align:center;
+    width: 653px;
+}
+
+.general-container {
+	margin-left: 50%;
+	width:660px;	
+}
+
+.general-container>div{
+	margin-left: -50%;
+}
+
+.local-validation-message{
+	background-color:rgb(80,187,245);
+	font-style: italic;
+}
+
+.global-messages {
+	background-color:rgb(80,187,245);
+	font-style: italic;
+	text-align:center;
+	width:100%;
+}
+
+.welcome-bar-button{
+	float:right;
+	margin-right: 10px;
+	background-color: #C8C8C8;
+    border: 2px solid black;
+    border-radius: 5px 5px 5px 5px;
+    padding: 0 2px;
+}
+
+.welcome-bar-msg{
+	float:left;
+	font-style: italic;
+	color: red;
+	margin-left: 10px;
+}
+
+#welcome-bar {
+	margin-bottom : 5px;
+}
+
+#header > label{
+	font-size: 20px;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+#header{
+	margin-bottom: 20px;
+}
