@@ -4,8 +4,11 @@ import java.io.Serializable;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.core.MediaType;
 
+import com.futsall.service.provider.ServiceProvider;
 import com.futsall.user.UserAccount;
+import com.sun.jersey.api.representation.Form;
 
 public class LoginBean implements Serializable{
 
@@ -17,6 +20,12 @@ public class LoginBean implements Serializable{
 	private static final String SUCCESSFUL_LOGIN = "success";
 	
 	private static final String LOGOUT_SUCCESS = "logout";
+	
+	private static final String USERNAME_PARAM = "username";
+	
+	private static final String PASSWORD_PARAM = "password";
+	
+	private static final String LOGIN_PATH = "/login";
 	
 	private String username;
 	
@@ -45,8 +54,21 @@ public class LoginBean implements Serializable{
 	}
 	
 	public String login() {
-		// on successfull login
-		return SUCCESSFUL_LOGIN;
+
+		Form form = new Form();
+		form.add(USERNAME_PARAM, username);
+		form.add(PASSWORD_PARAM, UserAccount.hashPassword(password));
+		String response = ServiceProvider.getResource().
+				path(LOGIN_PATH).accept(MediaType.APPLICATION_XML).
+				type(MediaType.APPLICATION_FORM_URLENCODED).
+				post(String.class, form);
+		
+		if ( response.equals(SUCCESSFUL_LOGIN)){
+			userAccount.setUsername(username);
+			return SUCCESSFUL_LOGIN;
+		}
+		
+		return null;
 	}
 	
 	/**

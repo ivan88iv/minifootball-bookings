@@ -1,6 +1,9 @@
 package com.futsall.user;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.context.FacesContext;
@@ -13,6 +16,8 @@ public class UserAccount implements Serializable{
 	private static final long serialVersionUID = 6648894461890377076L;
 	
 	private static final String LOGIN_PAGE_ID = "login.xhtml";
+	
+	private static final String SALT = "atyXrEVasdpoinQUCJll";
 	
 	private String username;
 
@@ -57,5 +62,28 @@ public class UserAccount implements Serializable{
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public static String hashPassword(String password)
+	{
+		MessageDigest digest = null;
+		String result = null;
+		try {
+			digest = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+	    digest.reset();
+	    try {
+			digest.update(SALT.getBytes("UTF-8"));
+			byte[] hash = digest.digest(password.getBytes("UTF-8"));
+	    
+			result = new String(hash, "UTF-8");
+	    }
+	    catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	    
+	    return result;
 	}
 }

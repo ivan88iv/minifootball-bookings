@@ -37,7 +37,7 @@ public class DBManager {
 
 	private static final String DB_USERNAME = "root";
 
-	private static final String DB_PASS = "123";
+	private static final String DB_PASS = "swarzewo";
 	
 	private static final Logger LOGGER = Logger.getLogger(DBManager.class.getName()); 
 
@@ -67,6 +67,9 @@ public class DBManager {
 
 	private static final String SELECT_CITIES_BY_COUNTRY = 
 			"SELECT DISTINCT p.city as city FROM minifootball.playground p WHERE p.country =?";
+	
+	private static final String SELECT_USER_BY_USERNAME_AND_PASS = "SELECT 1 FROM minifootball.userprofile u" +
+			" WHERE u.username = ? AND u.pass = ?";
 
 	private Connection connection;
 
@@ -191,6 +194,54 @@ public class DBManager {
 		}
 		
 		return resultList;
+	}
+	
+	/**
+	 * The method checks if a user with the specified username and password exists
+	 * 
+	 * @param username the user's username
+	 * @param password the user's password
+	 * @return true if the user is valid, false otherwise
+	 */
+	public boolean isUserValid(String username, String password)
+	{
+		boolean result = false;
+		try {
+			preparedStatement = connection
+					.prepareStatement(SELECT_USER_BY_USERNAME_AND_PASS);
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
+			resultSet = preparedStatement.executeQuery();
+			result = resultSet.next();
+		} catch (SQLException sqle) {
+			LOGGER.log(Level.WARNING,sqle.getMessage());
+		}
+
+		return result;
+	}
+	
+	/**
+	 * The method adds a new user to the database
+	 * 
+	 * @return true if the user was added successfully, false otherwise
+	 */
+	public boolean addNewUser(String username, String password, String firstName, String lastName,
+			String telephone, String email, String address)
+	{
+		boolean result = false;
+		
+		String sql = "INSERT INTO userprofile(username, pass, firstName, lastName, telephone, " +
+				"email, address) VALUES('" + username + "', '" + password + "', '" + firstName + "', '" +
+				lastName + "', '" + telephone + "', '" + email + "', '" + address + "')";
+		try {
+			Statement stmt = connection.createStatement();
+			stmt.executeUpdate(sql);
+			result = true;
+		} catch (SQLException sqle) {
+			LOGGER.log(Level.WARNING,sqle.getMessage());
+		}
+		
+		return result;
 	}
 
 	private List<String> readCities(List<String> inCities)

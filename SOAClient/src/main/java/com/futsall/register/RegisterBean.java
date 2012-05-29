@@ -2,6 +2,12 @@ package com.futsall.register;
 
 import java.io.Serializable;
 
+import javax.ws.rs.core.MediaType;
+
+import com.futsall.service.provider.ServiceProvider;
+import com.futsall.user.UserAccount;
+import com.sun.jersey.api.representation.Form;
+
 public class RegisterBean implements Serializable{
 
 	/**
@@ -10,6 +16,8 @@ public class RegisterBean implements Serializable{
 	private static final long serialVersionUID = -423687696071315992L;
 
 	private static final String SUCCESSFULL_REGISTRATION="success";
+	
+	private static final String REGISTER_PATH = "/register";
 	
 	private String username;
 	
@@ -28,8 +36,26 @@ public class RegisterBean implements Serializable{
 	private String address;
 
 	public String register() {
-		// on successfull registration
-		return SUCCESSFULL_REGISTRATION;
+		
+		Form form = new Form();
+		form.add("username", username);
+		form.add("password", UserAccount.hashPassword(password));
+		form.add("firstName", firstName);
+		form.add("lastName", lastName);
+		form.add("telephone", telephone);
+		form.add("email", email);
+		form.add("address", address);
+		
+		String response = ServiceProvider.getResource().
+				path(REGISTER_PATH).accept(MediaType.APPLICATION_XML).
+				type(MediaType.APPLICATION_FORM_URLENCODED).
+				post(String.class, form);
+		
+		if(response.equals(SUCCESSFULL_REGISTRATION)){
+			return SUCCESSFULL_REGISTRATION;
+		}
+		
+		return null;
 	}
 	
 	public String getUsername() {
