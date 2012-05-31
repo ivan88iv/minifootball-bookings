@@ -37,7 +37,7 @@ public class DBManager {
 
 	private static final String DB_USERNAME = "root";
 
-	private static final String DB_PASS = "swarzewo";
+	private static final String DB_PASS = "123";
 	
 	private static final Logger LOGGER = Logger.getLogger(DBManager.class.getName()); 
 
