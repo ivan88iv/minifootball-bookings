@@ -4,6 +4,9 @@
 /SOAModel/target
 /SOAParent/.settings
 /SOAServer/.settings
+/SOAServer/WebContent
+
+
 /SOAServer/build
 /SOAServer/target
 /RemoteSystemsTempFiles
