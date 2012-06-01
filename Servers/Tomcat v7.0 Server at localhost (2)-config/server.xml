@@ -124,7 +124,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="SOAServer" path="/SOAServer" reloadable="true" source="org.eclipse.jst.jee.server:SOAServer"/><Context docBase="D:\u4ebnici i lekcii\lekcii\Master of Arts\Semester 2\Service Oriented Architecture\Project\SOAClient\target\SOAClient-0.0.1" path="/SOAClient" reloadable="true"/></Host>
+      <Context docBase="D:\u4ebnici i lekcii\lekcii\Master of Arts\Semester 2\Service Oriented Architecture\Project\SOAClient\target\SOAClient-0.0.1" path="/SOAClient" reloadable="true"/><Context docBase="D:\u4ebnici i lekcii\lekcii\Master of Arts\Semester 2\Service Oriented Architecture\Project\SOAServer\target\SOAServer-0.0.1" path="/SOAServer" reloadable="true"/></Host>
     </Engine>
   </Service>
 </Server>

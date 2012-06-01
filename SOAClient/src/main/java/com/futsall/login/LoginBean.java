@@ -1,12 +1,15 @@
 package com.futsall.login;
 
 import java.io.Serializable;
+import java.util.ResourceBundle;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.MediaType;
 
 import com.futsall.service.provider.ServiceProvider;
+import com.futsall.user.User;
 import com.futsall.user.UserAccount;
 import com.sun.jersey.api.representation.Form;
 
@@ -27,11 +30,17 @@ public class LoginBean implements Serializable{
 	
 	private static final String LOGIN_PATH = "/login";
 	
+	private static final String MSGS_NAME = "msgs";
+	
+	private static final String INCORRECT_LOGIN_MSG_KEY="login.incorrect";
+	
 	private String username;
 	
 	private String password;
 	
 	private UserAccount userAccount;
+	
+	private ResourceBundle messages;
 	
 	public String getUsername() {
 		return username;
@@ -58,15 +67,26 @@ public class LoginBean implements Serializable{
 		Form form = new Form();
 		form.add(USERNAME_PARAM, username);
 		form.add(PASSWORD_PARAM, UserAccount.hashPassword(password));
-		String response = ServiceProvider.getResource().
+		User response = ServiceProvider.INSTANCE.getResource().
 				path(LOGIN_PATH).accept(MediaType.APPLICATION_XML).
 				type(MediaType.APPLICATION_FORM_URLENCODED).
-				post(String.class, form);
+				post(User.class, form);
 		
-		if ( response.equals(SUCCESSFUL_LOGIN)){
+		if ( response.getUsername() != null){
+			userAccount.setId(response.getId());
 			userAccount.setUsername(username);
+			userAccount.setAddress(response.getAddress());
+			userAccount.setEmail(response.getEmail());
+			userAccount.setLastName(response.getLastName());
+			userAccount.setFirstName(response.getFirstName());
+			userAccount.setTelephone(response.getTelephone());
+			
 			return SUCCESSFUL_LOGIN;
 		}
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(null, new FacesMessage(
+				getMessages(context).getString(INCORRECT_LOGIN_MSG_KEY)));
 		
 		return null;
 	}
@@ -86,11 +106,19 @@ public class LoginBean implements Serializable{
 		if (session != null)
 		{
 			session.invalidate();
-			userAccount.setUsername(null);
+			userAccount.invalidateUser();
 
 			result = LOGOUT_SUCCESS;
 		}
 
 		return result;
+	}
+	
+	private ResourceBundle getMessages(FacesContext inContext) {
+		if(messages==null){
+			messages = inContext.getApplication().getResourceBundle(inContext, MSGS_NAME);
+		}
+		
+		return messages;
 	}
 }

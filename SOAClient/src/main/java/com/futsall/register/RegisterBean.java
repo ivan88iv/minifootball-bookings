@@ -46,7 +46,7 @@ public class RegisterBean implements Serializable{
 		form.add("email", email);
 		form.add("address", address);
 		
-		String response = ServiceProvider.getResource().
+		String response = ServiceProvider.INSTANCE.getResource().
 				path(REGISTER_PATH).accept(MediaType.APPLICATION_XML).
 				type(MediaType.APPLICATION_FORM_URLENCODED).
 				post(String.class, form);

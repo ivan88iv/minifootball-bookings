@@ -14,7 +14,7 @@ public class Schedule implements Serializable {
 	 */
 	private static final long serialVersionUID = 3960952239425289969L;
 
-//	private PlayGround playGround;
+	private int playGroundId;
 	
 	private User user;
 	
@@ -22,13 +22,13 @@ public class Schedule implements Serializable {
 	
 	private Date endTime;
 
-//	public PlayGround getPlayGround() {
-//		return playGround;
-//	}
-//
-//	public void setPlayGround(PlayGround playGround) {
-//		this.playGround = playGround;
-//	}
+	public int getPlayGroundId() {
+		return playGroundId;
+	}
+
+	public void setPlayGroundId(int playGroundId) {
+		this.playGroundId = playGroundId;
+	}
 
 	public User getUser() {
 		return user;

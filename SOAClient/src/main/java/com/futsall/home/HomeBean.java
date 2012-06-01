@@ -49,13 +49,13 @@ public class HomeBean implements Serializable{
 	
 	private PlayGround selectedPlayground;
 
-	private List<String> countriesToSelectFrom;
+	private List<String> countriesToSelectFrom = new ArrayList<>();
 	
-	private List<String> citiesToSelectFrom;
+	private List<String> citiesToSelectFrom = new ArrayList<>();
 	
-	private List<SelectItem> playgroundsToSelectFrom;
+	private List<SelectItem> playgroundsToSelectFrom = new ArrayList<>();
 	
-	private Map<String,PlayGround> playgroundsMap;
+	private Map<String,PlayGround> playgroundsMap = new HashMap<>();
 	
 	private boolean isInitialCountryLoadingPerformed = false;
 	
@@ -73,9 +73,12 @@ public class HomeBean implements Serializable{
 		
 		isInitialCountryLoadingPerformed = true;
 		
-		countriesToSelectFrom = new ArrayList<>();
+		countriesToSelectFrom.clear();
+		citiesToSelectFrom.clear();
+		playgroundsToSelectFrom.clear();
+		playgroundsMap.clear();
 		
-		ListOfCountries countries = ServiceProvider.getResource().
+		ListOfCountries countries = ServiceProvider.INSTANCE.getResource().
 				path(ALL_COUNTRIES_SERVICE_PATH).accept(MediaType.APPLICATION_XML).
 					get(ListOfCountries.class);
 		
@@ -92,9 +95,10 @@ public class HomeBean implements Serializable{
 	 * @param event the event
 	 */
 	public void loadCities(AjaxBehaviorEvent event) {
-		citiesToSelectFrom = new ArrayList<>();
+		citiesToSelectFrom.clear();
+		resetSelectedPlayground();
 		
-		ListOfCities cities = ServiceProvider.getResource().
+		ListOfCities cities = ServiceProvider.INSTANCE.getResource().
 				path(CITIES_SERVICE_PATH).queryParam("country", selectedCountry).
 				accept(MediaType.APPLICATION_XML).get(ListOfCities.class);
 		
@@ -104,6 +108,7 @@ public class HomeBean implements Serializable{
 		}
 	}
 	
+	
 	/**
 	 * The method loads the playgrounds for a given city
 	 * when the city is selected
@@ -111,10 +116,9 @@ public class HomeBean implements Serializable{
 	 * @param event the event
 	 */
 	public void loadPlaygrounds(AjaxBehaviorEvent event) {
-		playgroundsToSelectFrom = new ArrayList<>();
-		playgroundsMap = new HashMap<>();
+		resetSelectedPlayground();
 		
-		ListOfPlayGrounds playGrounds = ServiceProvider.getResource().
+		ListOfPlayGrounds playGrounds = ServiceProvider.INSTANCE.getResource().
 				path(PLAYGROUNDS_SERVICE_PATH).queryParam("city", selectedCity).
 					queryParam("country", selectedCountry).accept(MediaType.APPLICATION_XML).get(
 					ListOfPlayGrounds.class);
@@ -197,7 +201,6 @@ public class HomeBean implements Serializable{
 		userAccount = inUser;
 	}
 	
-	
 	/**
 	 * Returns true if a playground is selected
 	 *  
@@ -205,5 +208,15 @@ public class HomeBean implements Serializable{
 	 */
 	public boolean isPlaygroundSelected() {
 		return selectedPlayground != null;
+	}
+	
+	/**
+	 * The method resets the information about the selected and loaded playgrounds
+	 */
+	private void resetSelectedPlayground() {
+		playgroundsToSelectFrom.clear();
+		playgroundsMap.clear();
+		selectedPlaygroundId = "";
+		selectedPlayground = null;
 	}
 }

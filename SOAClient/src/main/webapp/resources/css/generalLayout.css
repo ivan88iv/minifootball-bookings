@@ -4,6 +4,10 @@
 	font-size: 16px;
 }
 
+input{
+	max-width: 125px;
+}
+
 a {
 	text-decoration:  none;
 	color:black;
@@ -52,7 +56,7 @@ body {
 
 .general-container {
 	margin-left: 50%;
-	width:660px;	
+	width:647px;	
 }
 
 .general-container>div{

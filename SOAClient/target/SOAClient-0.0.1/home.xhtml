@@ -31,7 +31,7 @@
 							listHeight="150" listWidth="142" 
 							defaultLabel="#{msgs['home.select.country']}">
 							<f:ajax event="selectitem" execute="playgroundForm:country-select"
-								render="playgroundForm:city-select" 
+								render="playgroundForm:city-select playgroundForm:playground-select playground-info-holder" 
 								listener="#{home.loadCities}"/>
 							<f:selectItems value="#{home.countriesToSelectFrom}"/>
 						</rich:select>
@@ -44,7 +44,7 @@
 							listHeight="150" listWidth="142"
 							defaultLabel="#{msgs['home.select.city']}">
 							<f:ajax event="selectitem" execute="playgroundForm:city-select"
-								render="playgroundForm:playground-select" 
+								render="playgroundForm:playground-select playground-info-holder" 
 								listener="#{home.loadPlaygrounds}"/>
 							<f:selectItems value="#{home.citiesToSelectFrom}"/>
 						</rich:select>

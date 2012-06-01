@@ -61,6 +61,11 @@
 	        <property-name>selectedPlayground</property-name>
 			<value>#{home.selectedPlayground}</value>	        
 	    </managed-property>
+	    
+  	    <managed-property>
+	        <property-name>userAccount</property-name>
+			<value>#{userAccount}</value>	        
+	    </managed-property>
 	</managed-bean>
 	
 	<navigation-rule>
@@ -75,7 +80,7 @@
 	    <from-view-id>/register.xhtml</from-view-id>
 	    <navigation-case>
 	        <from-outcome>success</from-outcome>
-	        <to-view-id>/home.xhtml</to-view-id>
+	        <to-view-id>/successfulRegister.xhtml</to-view-id>
 	    </navigation-case>
 	</navigation-rule>
 	

@@ -2,3 +2,13 @@
 	margin-right:95px;
 }
 
+.img-holder {
+	margin-top: -33px;
+	margin-bottom: 15px;
+}
+
+.img-holder img {
+	width: 260px;
+	border: 3px solid black;
+	border-radius: 10px;
+}

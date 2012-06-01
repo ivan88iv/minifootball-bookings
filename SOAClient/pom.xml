@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>SOAClient</artifactId>
 	<packaging>war</packaging>
@@ -81,5 +83,46 @@
 		    <groupId>com.sun.jersey</groupId>
 		    <artifactId>jersey-json</artifactId>
 		</dependency>
+		
+		<!-- Selenium Server -->
+		<dependency>
+	        <groupId>org.seleniumhq.selenium</groupId>
+	        <artifactId>selenium-server</artifactId>
+	    </dependency>
+	    
+		<!-- Selenium Client Driver -->
+		<dependency>
+	        <groupId>org.seleniumhq.selenium</groupId>
+	        <artifactId>selenium-java</artifactId>
+	    </dependency>
+	    
+		<!-- Selenium 3rd party driver for Opera -->
+		<dependency>
+	        <groupId>com.opera</groupId>
+	        <artifactId>operadriver</artifactId>
+	    </dependency>
+	    
+		<!-- TestNG -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+		</dependency>
 	</dependencies>
+	
+	<build>
+	    <filters>
+	        <filter>src/main/filters/${user.name}.properties</filter>
+	    </filters>
+	    <resources>
+			<resource>
+			    <directory>src/main/resources</directory>
+			    <filtering>false</filtering>
+			</resource>
+			<resource>
+			    <directory>src/main/resources/com/futsall</directory>
+			    <targetPath>com/futsall</targetPath>
+			    <filtering>true</filtering>
+			</resource>		        
+	    </resources>
+	</build>
 </project>

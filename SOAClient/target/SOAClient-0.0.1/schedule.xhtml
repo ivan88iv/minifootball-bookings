@@ -17,13 +17,13 @@
 		
 		
 		<ui:define name="homeContent">
-		<ui:remove>
 			<f:event type="preRenderView" listener="#{userAccount.checkUserLoggedIn}" />
-		</ui:remove>
+			
 			<h:outputStylesheet name="schedule.css" library="css"/>
-			<h:messages layout="table" globalOnly="true" styleClass="global-messages"/>
+			<h:messages id="global-messages"
+				layout="table" globalOnly="true" styleClass="global-messages"/>
 
-			<h:form id="reserve-form">
+			<h:form id="schedule-form">
 				<h:panelGroup layout="block" styleClass="playground-info-area">
 					<h:outputLabel for="playgroundId" value="#{msgs['schedule.playground.name']}"/>
 					<h:inputText id="playgroundId" disabled="true" 
@@ -45,9 +45,10 @@
 						styleClass="header"/>
 					<rich:calendar id="daySelector" datePattern="#{msgs['schedule.date.format']}"
 						value="#{schedule.selectedDate}"
-						onchange=" #{rich:element('reserve-form')}.submit()"
+						onchange=" #{rich:element('schedule-form')}.submit()"
 						required="true" requiredMessage="#{msgs['schedule.date.required']}">
-						<f:ajax event="change" render="time-reservation-container"/>
+						<f:ajax event="change" 
+							render="time-reservation-container reserve-form:reserve-new-hour-holder"/>
 					</rich:calendar>
 					<div>
 						<h:message for="daySelector" styleClass="local-validation-message"/>
@@ -105,41 +106,46 @@
 							</f:facet>
 						</h:column>
 					</h:dataTable>
-					
-					<h:panelGroup id="reserve-new-hour-holder" layout="block" >
-						<h:panelGroup styleClass="new-reservation-hdr" layout="block">
-							<h:outputLabel value="Reserve the playground :" 
-								styleClass="header"/>
-						</h:panelGroup>
-						
-						<h:outputLabel for="startTimeInput" value="From :"/>
-						<h:inputText id="startTimeInput" value="#{schedule.startTime}" required="true" 
-							requiredMessage="#{msgs['schedule.from.required']}"
-							converterMessage="#{msgs['schedule.time.converted']}">
-							<f:convertDateTime pattern="HH:mm"/>
-						</h:inputText>
-						
-						<h:outputLabel for="endTimeInput" value="To :" styleClass="not-initial-label"/>
-						<h:inputText id="endTimeInput" value="#{schedule.endTime}" required="true"
-							requiredMessage="#{msgs['schedule.to.required']}"
-							converterMessage="#{msgs['schedule.time.converted']}">
-							<f:convertDateTime pattern="HH:mm"/>
-						</h:inputText>
-						
-						<h:panelGroup id="startTimeInpuMsgtHolder" layout="block">
-							<h:message for="startTimeInput" styleClass="local-validation-message"/>
-						</h:panelGroup>
-						
-						<h:panelGroup id="endTimeInpuMsgtHolder" layout="block">
-							<h:message for="endTimeInput" styleClass="local-validation-message"/>
-						</h:panelGroup>
-						
-						<h:panelGroup layout="block" styleClass="reserve-button">
-							<comp:button text="Reserve" 
-								action="#{schedule.reservePlayground}"/>
-						</h:panelGroup>
+				</h:panelGroup>
+			</h:form>
+			
+			<h:form id="reserve-form">		
+				<h:panelGroup id="reserve-new-hour-holder" layout="block" 
+					rendered="#{schedule.selectedDate!=null}">
+					<h:panelGroup styleClass="new-reservation-hdr" layout="block">
+						<h:outputLabel value="Reserve the playground :" 
+							styleClass="header"/>
 					</h:panelGroup>
-				</h:panelGroup>	
+					
+					<h:outputLabel for="startTimeInput" value="From :"/>
+					<h:inputText id="startTimeInput" value="#{schedule.startTime}" required="true" 
+						requiredMessage="#{msgs['schedule.from.required']}"
+						converterMessage="#{msgs['schedule.time.converted']}">
+						<f:convertDateTime pattern="HH:mm"/>
+					</h:inputText>
+					
+					<h:outputLabel for="endTimeInput" value="To :" styleClass="not-initial-label"/>
+					<h:inputText id="endTimeInput" value="#{schedule.endTime}" required="true"
+						requiredMessage="#{msgs['schedule.to.required']}"
+						converterMessage="#{msgs['schedule.time.converted']}">
+						<f:convertDateTime pattern="HH:mm"/>
+					</h:inputText>
+					
+					<h:panelGroup id="startTimeInpuMsgtHolder" layout="block">
+						<h:message for="startTimeInput" styleClass="local-validation-message"/>
+					</h:panelGroup>
+					
+					<h:panelGroup id="endTimeInpuMsgtHolder" layout="block">
+						<h:message for="endTimeInput" styleClass="local-validation-message"/>
+					</h:panelGroup>
+					
+					<h:panelGroup layout="block" styleClass="reserve-button">
+						<comp:button text="Reserve" 
+							action="#{schedule.reservePlayground}">
+							<f:ajax event="action" execute="@form" render="@form global-messages"/>
+						</comp:button>	
+					</h:panelGroup>
+				</h:panelGroup>
 			</h:form>
 		</ui:define>
 	</ui:composition>
