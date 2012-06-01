@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+ 	xmlns:comp="http://java.sun.com/jsf/composite/compositeComponents">
+
+<h:body>
+	<ui:composition template="templates/loginLayout.xhtml">
+		<ui:param name="headerTxt" value="#{msgs['successful.register.hdr']}"/>
+		<ui:param name="headerSubMsg" value=""/>
+		
+		<ui:define name="title">
+			<title>#{msgs['successful.register.title']}</title>
+		</ui:define>
+
+		<ui:define name="headerButton">
+			<h:link value="#{msgs['successful.register.login']}" 
+				outcome="#{msgs['successful.register.navigation']}"/>
+		</ui:define>
+
+		<ui:define name="submitButton">
+			<h:outputStylesheet name="loginRegister.css" library="css"/>
+			
+			<h:panelGroup styleClass="img-holder" layout="block">
+				<h:graphicImage name="goal.jpg" library="img"/>
+			</h:panelGroup>
+		
+			<comp:button text="#{msgs['successful.register.login']}" 
+				action="login.xhtml"/>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

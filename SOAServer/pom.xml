@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>SOAServer</artifactId>
+	<packaging>war</packaging>
+	
+	<parent>
+	  <groupId>com.futsall</groupId>
+	  <artifactId>SOAParent</artifactId>
+	  <version>0.0.1</version>
+	  <relativePath>../SOAParent</relativePath>
+	</parent>
+	
+	<dependencies>
+	    <!-- SOAModel -->
+	    <dependency>
+	        <groupId>com.futsall</groupId>
+	        <artifactId>SOAModel</artifactId>
+	        <version>0.0.1</version>
+	    </dependency>
+	    
+		<!-- Jersey -->
+		<dependency>
+		    <groupId>com.sun.jersey</groupId>
+		    <artifactId>jersey-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-servlet</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.sun.jersey</groupId>
+		    <artifactId>jersey-client</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.sun.jersey</groupId>
+		    <artifactId>jersey-json</artifactId>
+		</dependency>
+		
+		<!-- Selenium Server -->
+<!-- 		<dependency> -->
+<!-- 	        <groupId>org.seleniumhq.selenium</groupId> -->
+<!-- 	        <artifactId>selenium-server</artifactId> -->
+<!-- 	    </dependency> -->
+	    
+		<!-- Selenium Client Driver -->
+<!-- 		<dependency> -->
+<!-- 	        <groupId>org.seleniumhq.selenium</groupId> -->
+<!-- 	        <artifactId>selenium-java</artifactId> -->
+<!-- 	    </dependency> -->
+	    
+		<!-- Selenium 3rd party driver for Opera -->
+<!-- 		<dependency> -->
+<!-- 	        <groupId>com.opera</groupId> -->
+<!-- 	        <artifactId>operadriver</artifactId> -->
+<!-- 	    </dependency> -->
+	    
+		<!-- TestNG -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.testng</groupId> -->
+<!-- 			<artifactId>testng</artifactId> -->
+<!-- 		</dependency> -->
+		
+		<!-- MySQL connector -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<build>
+	    <filters>
+	        <filter>src/main/filters/${user.name}.properties</filter>
+	    </filters>
+	    <resources>
+			<resource>
+			    <directory>src/main/resources</directory>
+			    <filtering>false</filtering>
+			</resource>
+			<resource>
+			    <directory>src/main/resources/com/futsall</directory>
+			    <targetPath>com/futsall</targetPath>
+			    <filtering>true</filtering>
+			</resource>		        
+	    </resources>
+	</build>
+</project>
