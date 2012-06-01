@@ -12,3 +12,7 @@
 /SOAServer/target
 /SOAServer/.classpath
 /RemoteSystemsTempFiles
+/SOAClient/test-output
+/SOAClient/target
+/SOAModel/target
+*.class
