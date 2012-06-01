@@ -70,6 +70,9 @@ public class DBManager {
 	
 	private static final String SELECT_USER_BY_USERNAME_AND_PASS = "SELECT 1 FROM minifootball.userprofile u" +
 			" WHERE u.username = ? AND u.pass = ?";
+	
+	private static final String INSERT_USER = "INSERT INTO userprofile(username, pass, firstName, lastName, telephone, " +
+			"email, address) VALUES(?, ?, ?, ?, ?, ?, ?)";
 
 	private Connection connection;
 
@@ -230,12 +233,17 @@ public class DBManager {
 	{
 		boolean result = false;
 		
-		String sql = "INSERT INTO userprofile(username, pass, firstName, lastName, telephone, " +
-				"email, address) VALUES('" + username + "', '" + password + "', '" + firstName + "', '" +
-				lastName + "', '" + telephone + "', '" + email + "', '" + address + "')";
 		try {
-			Statement stmt = connection.createStatement();
-			stmt.executeUpdate(sql);
+			preparedStatement = connection
+					.prepareStatement(INSERT_USER);
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
+			preparedStatement.setString(3, firstName);
+			preparedStatement.setString(4, lastName);
+			preparedStatement.setString(5, telephone);
+			preparedStatement.setString(6, email);
+			preparedStatement.setString(7, address);
+			preparedStatement.executeUpdate();
 			result = true;
 		} catch (SQLException sqle) {
 			LOGGER.log(Level.WARNING,sqle.getMessage());
