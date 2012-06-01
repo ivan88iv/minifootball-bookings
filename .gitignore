@@ -2,15 +2,10 @@
 /SOAServer/target
 /SOAClient/target
 /SOAModel/target
-/SOAModel/.project
-/SOAModel/.classpath
-/SOAParent/.project
 /SOAParent/.settings
-/SOAServer/.project
 /SOAServer/.settings
 /SOAServer/build
 /SOAServer/target
-/SOAServer/.classpath
 /RemoteSystemsTempFiles
 /SOAClient/test-output
 /SOAClient/target
