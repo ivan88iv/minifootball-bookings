@@ -41,28 +41,28 @@
 		</dependency>
 		
 		<!-- Selenium Server -->
-<!-- 		<dependency> -->
-<!-- 	        <groupId>org.seleniumhq.selenium</groupId> -->
-<!-- 	        <artifactId>selenium-server</artifactId> -->
-<!-- 	    </dependency> -->
+		<dependency>
+	        <groupId>org.seleniumhq.selenium</groupId>
+	        <artifactId>selenium-server</artifactId>
+	    </dependency>
 	    
 		<!-- Selenium Client Driver -->
-<!-- 		<dependency> -->
-<!-- 	        <groupId>org.seleniumhq.selenium</groupId> -->
-<!-- 	        <artifactId>selenium-java</artifactId> -->
-<!-- 	    </dependency> -->
+		<dependency>
+	        <groupId>org.seleniumhq.selenium</groupId>
+	        <artifactId>selenium-java</artifactId>
+	    </dependency>
 	    
 		<!-- Selenium 3rd party driver for Opera -->
-<!-- 		<dependency> -->
-<!-- 	        <groupId>com.opera</groupId> -->
-<!-- 	        <artifactId>operadriver</artifactId> -->
-<!-- 	    </dependency> -->
+		<dependency>
+	        <groupId>com.opera</groupId>
+	        <artifactId>operadriver</artifactId>
+	    </dependency>
 	    
 		<!-- TestNG -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.testng</groupId> -->
-<!-- 			<artifactId>testng</artifactId> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+		</dependency>
 		
 		<!-- MySQL connector -->
 		<dependency>

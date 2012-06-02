@@ -32,7 +32,7 @@ public class PlayGroundsService {
 	}	
 	
 	/**
-	 * The method extracts all the countries in the database
+	 * The method extracts all the countries from the database
 	 * @return the entire set of countries from the database
 	 * 
 	 */
@@ -44,6 +44,12 @@ public class PlayGroundsService {
 		return dbManager.getAllCountries();
 	}
 	
+	/**
+	 * The method extracts all cities for a specified country from the database
+	 * 
+	 * @param inCountryName the name of the country which cities we want
+	 * @return the cities for the specified country from the database
+	 */
 	@GET
 	@Path("/cities")
 	@Produces(MediaType.APPLICATION_XML)
