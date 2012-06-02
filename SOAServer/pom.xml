@@ -84,7 +84,12 @@
 			    <directory>src/main/resources/com/futsall</directory>
 			    <targetPath>com/futsall</targetPath>
 			    <filtering>true</filtering>
-			</resource>		        
+			</resource>
+			<resource>
+			    <directory>src/test/resources/com/futsall/test</directory>
+			    <targetPath>com/futsall</targetPath>
+			    <filtering>true</filtering>
+			</resource>			        
 	    </resources>
 	</build>
 </project>
