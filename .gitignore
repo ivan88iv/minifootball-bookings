@@ -1,7 +1,6 @@
 /.metadata
 /SOAServer/target
-/SOAClient/target
-/SOAModel/target
+/SOAModel/target/*
 /SOAParent/.settings
 /SOAServer/.settings
 /SOAServer/WebContent
@@ -14,3 +13,6 @@
 /SOAClient/target
 /SOAModel/target
 *.class
+/SOAClient/target
+/SOAClient/target
+/SOAModel/target
