@@ -104,3 +104,18 @@ body {
 #header{
 	margin-bottom: 20px;
 }
+
+.error-content-holder {
+	min-height: 150px;
+}
+
+div.error-content-holder div {
+	margin-top: 50px;
+}
+
+div.error-content-holder span {
+	color: red;
+	font-size: 26px;
+	font-style: italic;
+    vertical-align: middle;
+}

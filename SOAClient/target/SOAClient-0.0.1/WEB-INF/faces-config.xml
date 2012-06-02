@@ -17,6 +17,11 @@
 		</resource-bundle>
 	</application>
 	
+	<factory>
+	    <exception-handler-factory>
+	        com.futsall.exception.handler.ViewExpiredExceptionHandlerFactory
+        </exception-handler-factory>
+	</factory>
 	
 	<managed-bean>
 	    <managed-bean-name>login</managed-bean-name>

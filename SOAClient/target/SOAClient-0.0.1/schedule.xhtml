@@ -40,11 +40,34 @@
 						value="#{schedule.selectedPlayground.country}"/>
 				</h:panelGroup>
 				
+				<h:outputScript target="head">
+					function dayDisablement(day) {
+						var currDate = new Date();
+						
+						if(currDate.getTime()-day.date.getTime() &gt; 0) {
+							return false;
+						} else {
+							return true;
+						}
+					}
+					
+					function disabledDayStyleDeterminer(day) {
+						var currDate = new Date();
+						
+						if(currDate.getTime() - day.date.getTime() &gt; 0) {
+							return 'rf-cal-boundary-day';
+						}
+						
+						return '';
+					}
+				</h:outputScript>
+				
 				<h:panelGroup layout="block" id="daySelectorHolder">
 					<h:outputLabel for="daySelector" value="#{msgs['schedule.select.day']}"
 						styleClass="header"/>
 					<rich:calendar id="daySelector" datePattern="#{msgs['schedule.date.format']}"
-						value="#{schedule.selectedDate}"
+						value="#{schedule.selectedDate}" dayDisableFunction="dayDisablement"
+						dayClassFunction="disabledDayStyleDeterminer"
 						onchange=" #{rich:element('schedule-form')}.submit()"
 						required="true" requiredMessage="#{msgs['schedule.date.required']}">
 						<f:ajax event="change" 
