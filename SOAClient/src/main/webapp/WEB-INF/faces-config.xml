@@ -50,11 +50,6 @@
 	    <managed-bean-name>home</managed-bean-name>
 	    <managed-bean-class>com.futsall.home.HomeBean</managed-bean-class>
 	    <managed-bean-scope>session</managed-bean-scope>
-	    
-	    <managed-property>
-	        <property-name>userAccount</property-name>
-			<value>#{userAccount}</value>	        
-	    </managed-property>
 	</managed-bean>
 	
 	<managed-bean>

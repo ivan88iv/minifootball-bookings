@@ -1,7 +1,10 @@
 package com.futsall.register;
 
 import java.io.Serializable;
+import java.util.ResourceBundle;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.ws.rs.core.MediaType;
 
 import com.futsall.service.provider.ServiceProvider;
@@ -19,6 +22,14 @@ public class RegisterBean implements Serializable{
 	
 	private static final String REGISTER_PATH = "/register";
 	
+	private static final String MSGS_NAME="msgs";
+	
+	private static final String PASSWORDS_NOT_EQUAL_KEY="register.not.equal.pass";
+	
+	private static final String USERNAME_EXISTS_MSG_KEY="register.user.already.registered"; 
+
+	private static final String USERNAME_MSG_HOLDER_ID="username";
+	
 	private String username;
 	
 	private String password;
@@ -35,7 +46,17 @@ public class RegisterBean implements Serializable{
 	
 	private String address;
 
+	private static ResourceBundle messages;
+	
 	public String register() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		if(!checkPasswordEquality()) {
+			context.addMessage(null, new FacesMessage(
+					getMessages(context).getString(PASSWORDS_NOT_EQUAL_KEY)));
+			return null;
+		}
+			
 		
 		Form form = new Form();
 		form.add("username", username);
@@ -53,9 +74,11 @@ public class RegisterBean implements Serializable{
 		
 		if(response.equals(SUCCESSFULL_REGISTRATION)){
 			return SUCCESSFULL_REGISTRATION;
+		} else {
+			context.addMessage(USERNAME_MSG_HOLDER_ID, new FacesMessage(
+					getMessages(context).getString(USERNAME_EXISTS_MSG_KEY)));
+			return null;
 		}
-		
-		return null;
 	}
 	
 	public String getUsername() {
@@ -120,5 +143,23 @@ public class RegisterBean implements Serializable{
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	private boolean checkPasswordEquality() {
+		if(password==null || confPassword == null) {
+			return false;
+		}else if(!password.equals(confPassword)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	private ResourceBundle getMessages(FacesContext inContext) {
+		if(messages==null){
+			messages = inContext.getApplication().getResourceBundle(inContext, MSGS_NAME);
+		}
+		
+		return messages;
 	}
 }

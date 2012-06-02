@@ -34,6 +34,8 @@ public class LoginBean implements Serializable{
 	
 	private static final String INCORRECT_LOGIN_MSG_KEY="login.incorrect";
 	
+	private static final String USER_ALREADY_LOGGED_IN ="login.alreadt.logged";
+	
 	private String username;
 	
 	private String password;
@@ -63,7 +65,14 @@ public class LoginBean implements Serializable{
 	}
 	
 	public String login() {
+		FacesContext context = FacesContext.getCurrentInstance();
 
+		if(userAccount!=null && userAccount.isUserInSystem()) {
+			context.addMessage(null, new FacesMessage(
+					getMessages(context).getString(USER_ALREADY_LOGGED_IN)));
+			return null;
+		}
+		
 		Form form = new Form();
 		form.add(USERNAME_PARAM, username);
 		form.add(PASSWORD_PARAM, UserAccount.hashPassword(password));
@@ -84,7 +93,6 @@ public class LoginBean implements Serializable{
 			return SUCCESSFUL_LOGIN;
 		}
 		
-		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage(null, new FacesMessage(
 				getMessages(context).getString(INCORRECT_LOGIN_MSG_KEY)));
 		
@@ -100,14 +108,7 @@ public class LoginBean implements Serializable{
 	{
 		String result = null;
 
-		HttpSession session =
-				(HttpSession) FacesContext.getCurrentInstance()
-						.getExternalContext().getSession(false);
-		if (session != null)
-		{
-			session.invalidate();
-			userAccount.invalidateUser();
-
+		if(invalidateSession(false)) {
 			result = LOGOUT_SUCCESS;
 		}
 
@@ -120,5 +121,32 @@ public class LoginBean implements Serializable{
 		}
 		
 		return messages;
+	}
+	
+	/**
+	 * The method invalidates the session if one exists and returns true
+	 * in this case. Otherwise it returns false
+	 * 
+	 * @param createNewSession if true a new session is created after the current is invalidated
+	 * @return true if the session was invalidated
+	 */
+	private boolean invalidateSession(boolean createNewSession) {
+		HttpSession session =
+				(HttpSession) FacesContext.getCurrentInstance()
+						.getExternalContext().getSession(false);
+		if (session != null)
+		{
+			session.invalidate();
+			userAccount.invalidateUser();
+			
+			if(createNewSession) {
+				 FacesContext.getCurrentInstance()
+					.getExternalContext().getSession(true);
+			}
+			
+			return true;
+		}
+		
+		return false;
 	}
 }

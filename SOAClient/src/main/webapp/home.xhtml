@@ -28,8 +28,7 @@
 						<rich:select id="country-select"
 							value="#{home.selectedCountry}"
 							required="true" requiredMessage="#{msgs['home.country.required']}"
-							listHeight="150" listWidth="142" 
-							defaultLabel="#{msgs['home.select.country']}">
+							listWidth="142" defaultLabel="#{msgs['home.select.country']}">
 							<f:ajax event="selectitem" execute="playgroundForm:country-select"
 								render="playgroundForm:city-select playgroundForm:playground-select playground-info-holder" 
 								listener="#{home.loadCities}"/>
@@ -41,8 +40,7 @@
 						<rich:select id="city-select"
 							value="#{home.selectedCity}"
 							required="true" requiredMessage="#{msgs['home.city.required']}"
-							listHeight="150" listWidth="142"
-							defaultLabel="#{msgs['home.select.city']}">
+							listWidth="142" defaultLabel="#{msgs['home.select.city']}">
 							<f:ajax event="selectitem" execute="playgroundForm:city-select"
 								render="playgroundForm:playground-select playground-info-holder" 
 								listener="#{home.loadPlaygrounds}"/>
@@ -54,8 +52,7 @@
 						<rich:select id="playground-select"
 							value="#{home.selectedPlaygroundId}"
 							required="true" requiredMessage="#{msgs['home.playground.required']}"
-							listHeight="150" listWidth="142"
-							defaultLabel="#{msgs['home.select.playground']}">
+							listWidth="142" defaultLabel="#{msgs['home.select.playground']}">
 							<f:ajax event="selectitem" render="playground-info-holder"
 								listener="#{home.loadPlaygroundInfo}"/>
 							<f:selectItems value="#{home.playgroundsToSelectFrom}"/>

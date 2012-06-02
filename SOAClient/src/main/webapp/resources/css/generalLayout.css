@@ -4,6 +4,10 @@
 	font-size: 16px;
 }
 
+textarea {
+	resize:none;
+}
+
 input{
 	max-width: 125px;
 }

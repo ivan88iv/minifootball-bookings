@@ -16,7 +16,6 @@ import com.futsall.country.ListOfCountries;
 import com.futsall.playGround.ListOfPlayGrounds;
 import com.futsall.playGround.PlayGround;
 import com.futsall.service.provider.ServiceProvider;
-import com.futsall.user.UserAccount;
 
 /**
  * The bean manages the condition for the home.xhtml page
@@ -37,8 +36,6 @@ public class HomeBean implements Serializable{
 	
 	private static final String PLAYGROUNDS_SERVICE_PATH = "/playgrounds";
 	
-	private static final String LOGIN_NAVIGATION = "login";
-	
 	private static final String SCHEDULE_NAVIGATION = "schedule";
 	
 	private String selectedCountry;
@@ -58,8 +55,6 @@ public class HomeBean implements Serializable{
 	private Map<String,PlayGround> playgroundsMap = new HashMap<>();
 	
 	private boolean isInitialCountryLoadingPerformed = false;
-	
-	private UserAccount userAccount;
 	
 	/**
 	 * Loads all the countries by calling a service
@@ -96,6 +91,7 @@ public class HomeBean implements Serializable{
 	 */
 	public void loadCities(AjaxBehaviorEvent event) {
 		citiesToSelectFrom.clear();
+		selectedCity = null;
 		resetSelectedPlayground();
 		
 		ListOfCities cities = ServiceProvider.INSTANCE.getResource().
@@ -148,13 +144,6 @@ public class HomeBean implements Serializable{
 	 */
 	public String selectPlayground() {
 		return SCHEDULE_NAVIGATION;
-//		if(userAccount.getUsername()==null ) {
-//			// the user should be logged in in order to continue
-//			return LOGIN_NAVIGATION;
-//		} else {
-//			//view the schedule of the selected playground
-//			return SCHEDULE_NAVIGATION;
-//		}
 	}
 
 	public String getSelectedCountry() {
@@ -195,10 +184,6 @@ public class HomeBean implements Serializable{
 	
 	public PlayGround getSelectedPlayground() {
 		return selectedPlayground;
-	}
-	
-	public void setUserAccount(UserAccount inUser) {
-		userAccount = inUser;
 	}
 	
 	/**
