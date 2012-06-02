@@ -1,6 +1,6 @@
 /.metadata
+*/target
 /SOAServer/target
-/SOAModel/target/*
 /SOAParent/.settings
 /SOAServer/.settings
 /SOAServer/WebContent
@@ -10,9 +10,7 @@
 /SOAServer/target
 /RemoteSystemsTempFiles
 /SOAClient/test-output
-/SOAClient/target
+SOAClient/target
 /SOAModel/target
 *.class
-/SOAClient/target
-/SOAClient/target
-/SOAModel/target
+/SOAModel/target/SOAModel-0.0.1.jar
