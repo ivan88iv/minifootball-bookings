@@ -127,6 +127,10 @@ public class DBManager {
 		super.finalize();
 	}
 
+	public Connection getConnection() {
+		return connection;
+	}
+	
 	/**
 	 * The method returns the playgrounds for a given country and city
 	 * 

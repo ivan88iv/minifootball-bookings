@@ -15,6 +15,10 @@ import com.futsall.playGround.ListOfPlayGrounds;
 public class PlayGroundsService {
 	private DBManager dbManager = new DBManager();
 	
+	public DBManager getDbManager() {
+		return dbManager;
+	}
+	
 	/**
 	 * Extracts a list of the playgrounds for the given city
 	 * 
