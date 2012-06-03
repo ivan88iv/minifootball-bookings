@@ -82,8 +82,8 @@ VALUES(1,'MG 1','str. Ar. Kostencev 1','(+359)882233221','valdano@abv.bg',6.5,20
 
 
 INSERT INTO userProfile(userName,pass,firstName,lastName,email)
-VALUES('soko','123','Stanimir','Ivanov','stan79@abv.bg'),
-('ruskoff','123','Petyr','Ruskoff','ruskoff@abv.bg');
+VALUES('soko','�A"!%�d�팃�c���߹��b,�6�','Stanimir','Ivanov','stan79@abv.bg'),
+('ruskoff','�A"!%�d�팃�c���߹��b,�6�','Petyr','Ruskoff','ruskoff@abv.bg');
 
 
 INSERT INTO reserved(userId,playGroundId,startTime,endTime)
