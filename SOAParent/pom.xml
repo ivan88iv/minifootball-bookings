@@ -44,7 +44,7 @@
 		        <groupId>org.seleniumhq.selenium</groupId>
 		        <artifactId>selenium-server</artifactId>
 		        <version>2.21.0</version>
-		        <scope>test</scope>
+<!-- 		        <scope>test</scope> -->
 		    </dependency>
 		    
 			<!-- Selenium Client Driver -->
@@ -52,7 +52,7 @@
 		        <groupId>org.seleniumhq.selenium</groupId>
 		        <artifactId>selenium-java</artifactId>
 		        <version>2.21.0</version>
-		        <scope>test</scope>
+<!-- 		        <scope>test</scope> -->
 		    </dependency>
 		    
 			<!-- Selenium 3rd party driver for Opera -->
@@ -60,7 +60,7 @@
 		        <groupId>com.opera</groupId>
 		        <artifactId>operadriver</artifactId>
 		        <version>0.13</version>
-		        <scope>test</scope>
+<!-- 		        <scope>test</scope> -->
 		    </dependency>
 		    
 			<!-- TestNG -->
@@ -68,7 +68,7 @@
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
 				<version>6.5.2</version>
-				<scope>test</scope>
+<!-- 				<scope>test</scope> -->
 			</dependency>
 			
 			<!-- MySQL connector -->

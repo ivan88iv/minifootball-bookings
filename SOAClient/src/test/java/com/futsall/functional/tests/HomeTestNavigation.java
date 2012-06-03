@@ -5,7 +5,7 @@ import org.openqa.selenium.server.SeleniumServer;
 import org.testng.annotations.Test;
 
 import com.thoughtworks.selenium.SeleneseTestNgHelper;
-
+ 
 public class HomeTestNavigation extends SeleneseTestNgHelper{
 	private SeleniumServer server;
 	

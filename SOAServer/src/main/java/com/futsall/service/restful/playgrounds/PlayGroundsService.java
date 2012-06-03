@@ -26,7 +26,6 @@ public class PlayGroundsService {
 	public ListOfPlayGrounds getPlayGrounds(
 			@QueryParam("city") String cityName,
 			@QueryParam("country") String countryName) {
-		
 		// get the playgrounds from the database
 		return dbManager.getPlayGrounds(cityName, countryName);
 	}	

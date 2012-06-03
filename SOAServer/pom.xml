@@ -75,6 +75,7 @@
 	    <filters>
 	        <filter>src/main/filters/${user.name}.properties</filter>
 	    </filters>
+	    
 	    <resources>
 			<resource>
 			    <directory>src/main/resources</directory>
@@ -84,7 +85,19 @@
 			    <directory>src/main/resources/com/futsall</directory>
 			    <targetPath>com/futsall</targetPath>
 			    <filtering>true</filtering>
-			</resource>		        
+			</resource>
 	    </resources>
+
+   	    <testResources>
+   	        <testResource>
+			    <directory>src/test/resources</directory>
+			    <filtering>false</filtering>
+   	        </testResource>
+   	        <testResource>
+			    <directory>src/main/resources/com/futsall</directory>
+			    <targetPath>com/futsall</targetPath>
+			    <filtering>true</filtering>
+   	        </testResource>
+	    </testResources>
 	</build>
 </project>
