@@ -22,11 +22,19 @@ public class ReservationService {
 	
 	private DBManager dbManager = new DBManager();
 
+	public DBManager getDbManager() {
+		return dbManager;
+	}
+	
 	@PUT
 	@Produces(MediaType.APPLICATION_XML)
 	@Consumes(MediaType.APPLICATION_XML)
 	public ReservationResponse reservePlayground(JAXBElement<Schedule> inSchedule) {
 		Schedule schedule = inSchedule.getValue();
+		return reservePlayground(schedule);
+	}
+	
+	public ReservationResponse reservePlayground(Schedule schedule) {
 		Calendar calendar = Calendar.getInstance();
 		
 		if(schedule.getEndTime().before(schedule.getStartTime()) || 

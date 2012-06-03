@@ -25,12 +25,12 @@ public class User implements Serializable{
 	
 	private String email;
 
+	public void setId(int id){
+		this.id=id;
+	}
+	
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getUsername() {
