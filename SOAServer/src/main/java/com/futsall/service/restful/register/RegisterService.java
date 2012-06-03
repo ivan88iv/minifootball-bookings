@@ -17,7 +17,7 @@ public class RegisterService {
 	@POST
 	@Produces(MediaType.APPLICATION_XML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public String performLogin(@FormParam("username") String username,
+	public String performRegistration(@FormParam("username") String username,
 			@FormParam("password") String password,
 			@FormParam("firstName") String firstName,
 			@FormParam("lastName") String lastName,
