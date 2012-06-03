@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>TC1&2</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">TC1&2</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/SOAClient/faces/login.xhtml</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=register</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id73_j_id_2e:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please supply a user name!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please supply a password!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please supply a confirmaiton password!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please supply a first name!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please supply a last name!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please supply an e-mail!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>WrongConfirmation</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=confpassword</td>
+	<td>Wrong</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Wrong</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=family</td>
+	<td>Confirmation</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>test@email.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id73_j_id_2e:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Passwords do not match!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>WrongEmail</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=confpassword</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Wrong</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=family</td>
+	<td>Email</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>testemail</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id73_j_id_2e:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>The provided email address is not in the standard e-mail format. For example tisho_88@abv.bg.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>WrongPhone</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=confpassword</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Wrong</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=family</td>
+	<td>Phone</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=phone</td>
+	<td>Wrong</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>test@email.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id73_j_id_2e:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Telephone must be in the form (+digits)digits!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>UserOne</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=confpassword</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>User</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=family</td>
+	<td>One</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=phone</td>
+	<td>(+359)888888</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>test@email.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=address</td>
+	<td>Sofia</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id73_j_id_2e:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id27_j_id_u:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=register</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>UserOne</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>New</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=confpassword</td>
+	<td>New</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Existing</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=family</td>
+	<td>User</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>existing@email.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id73_j_id_2e:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>The username already exists!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id38_j_id_18:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please supply a user name!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please supply a password!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>UserOne</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id38_j_id_18:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please supply a password!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id38_j_id_18:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please supply a user name!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>UserOne</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id38_j_id_18:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Incorrect username or password!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>UserTwo</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Wrong</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id38_j_id_18:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Incorrect username or password!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>WrongConfirmation</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Wrong</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id38_j_id_18:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Incorrect username or password!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>WrongConfirmation</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id38_j_id_18:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Incorrect username or password!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>UserOne</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id38_j_id_18:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/SOAClient/faces/login.xhtml</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>UserOne</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id38_j_id_18:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>User is already logged in. Please, log out.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/SOAClient/faces/home.xhtml</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>UserOne</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id38_j_id_18:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/SOAClient/faces/home.xhtml</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=playgroundForm:j_id_1y:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please select a country from the list!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please select a playground from the list!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please select a city from the list!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=playgroundForm:country-selectItem0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:address</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:phone</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=playgroundForm:city-selectItem0</td>
+	<td>Blagoevgrad</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=playgroundForm:city-selectItem1</td>
+	<td>Sofia</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=playgroundForm:j_id_1y:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please select a playground from the list!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please select a city from the list!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=playgroundForm:city-selectItem1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:address</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:phone</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=playgroundForm:playground-selectItem0</td>
+	<td>Orlandovsti 1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=playgroundForm:playground-selectItem1</td>
+	<td>Studentski Grad 1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=playgroundForm:j_id_1y:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please select a playground from the list!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=playgroundForm:playground-selectItem1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:address</td>
+	<td>str. St. Kliment Ohridski 2</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:name</td>
+	<td>Studentski Grad 1</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:phone</td>
+	<td>(+359)882277333</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=playgroundForm:city-selectItem0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:address</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:phone</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=playgroundForm:playground-selectItem0</td>
+	<td>MG 1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=playgroundForm:playground-selectItem1</td>
+	<td>Stroitel 1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=playgroundForm:playground-selectItem2</td>
+	<td>Strumsko 1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=playgroundForm:playground-selectItem3</td>
+	<td>Strumsko 2</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=playgroundForm:playground-selectItem4</td>
+	<td>Elenovo 1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=playgroundForm:playground-selectItem1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:address</td>
+	<td>str. Fritiof Nansen 2</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:name</td>
+	<td>Stroitel 1</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:phone</td>
+	<td>(+359)882233221</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=playgroundForm:country-selectItem1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:address</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:phone</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=playgroundForm:city-selectItem0</td>
+	<td>Ohrid</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=playgroundForm:city-selectItem0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:address</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:phone</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=playgroundForm:playground-selectItem0</td>
+	<td>Ohrid 1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=playgroundForm:playground-selectItem0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:address</td>
+	<td>bul. Ohrid 13</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:name</td>
+	<td>Ohrid 1</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:phone</td>
+	<td>(+319)827723233</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=playgroundForm:j_id_1y:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>UserOne</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>Secret</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=j_id38_j_id_18:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:address</td>
+	<td>bul. Ohrid 13</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:name</td>
+	<td>Ohrid 1</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:phone</td>
+	<td>(+319)827723233</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=playgroundForm:country-selectItem0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=playgroundForm:city-selectItem1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=playgroundForm:playground-selectItem1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:address</td>
+	<td>str. St. Kliment Ohridski 2</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:name</td>
+	<td>Studentski Grad 1</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:phone</td>
+	<td>(+359)882277333</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=playgroundForm:j_id_1y:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=schedule-form:playgroundId</td>
+	<td>Studentski Grad 1</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=schedule-form:playgroundCity</td>
+	<td>Sofia</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=schedule-form:playgroundCountry</td>
+	<td>Bulgaria</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=schedule-form:daySelectorPopupButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=schedule-form:daySelectorDayCell11</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:startTimeInput</td>
+	<td>21:30</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:endTimeInput</td>
+	<td>20:30</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=j_id_1x:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>The start reservation time must be before the end reservation time.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:startTimeInput</td>
+	<td>21:90</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:endTimeInput</td>
+	<td>22:95</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=j_id_1x:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#reserve-form\:startTimeInpuMsgtHolder span</td>
+	<td>The value for the time should be in the format 'HH:mm'!</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#reserve-form\:endTimeInpuMsgtHolder span</td>
+	<td>The value for the time should be in the format 'HH:mm'!</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:startTimeInput</td>
+	<td>21:00</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:endTimeInput</td>
+	<td>21:00</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=j_id_1x:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>The start reservation time must be before the end reservation time.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:startTimeInput</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:endTimeInput</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=j_id_1x:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please, provide the time you want to reserve the playground from!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Please, provide the time you want to reserve the playground to!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:startTimeInput</td>
+	<td>21:00</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:endTimeInput</td>
+	<td>22:30</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=j_id_1x:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:address</td>
+	<td>str. St. Kliment Ohridski 2</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:name</td>
+	<td>Studentski Grad 1</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>id=playgroundForm:phone</td>
+	<td>(+359)882277333</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=playgroundForm:j_id_1y:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=schedule-form:daySelectorPopupButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=schedule-form:daySelectorDayCell11</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>21:00</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>22:30</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>UserOne</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:startTimeInput</td>
+	<td>22:00</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:endTimeInput</td>
+	<td>23:00</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=j_id_1x:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>The selected playground has already been reserved for the specified time interval!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:startTimeInput</td>
+	<td>22:30</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=reserve-form:endTimeInput</td>
+	<td>23:30</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=j_id_1x:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=playgroundForm:j_id_1y:button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=schedule-form:daySelectorPopupButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=schedule-form:daySelectorDayCell11</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>21:00</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>22:30</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>23:30</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>UserOne</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=logout</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
