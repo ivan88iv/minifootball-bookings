@@ -179,6 +179,7 @@ public class TCAllTestNG extends SeleneseTestNgHelper {
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isTextPresent("Please select a playground from the list!"));
 		selenium.click("id=playgroundForm:playground-selectItem1");
+		Thread.sleep(2000);
 		assertEquals(selenium.getValue("id=playgroundForm:address"), "str. St. Kliment Ohridski 2");
 		assertEquals(selenium.getValue("id=playgroundForm:name"), "Studentski Grad 1");
 		assertEquals(selenium.getValue("id=playgroundForm:phone"), "(+359)882277333");
