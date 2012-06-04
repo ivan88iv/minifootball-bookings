@@ -49,6 +49,6 @@ public class ClientApp {
 	}
 	
 	private static URI getBaseUri() {
-		return UriBuilder.fromUri("http://localhost:8080/SOAServer/minifootball").build();
+		return UriBuilder.fromUri("http://localhost:8090/SOAServer/minifootball").build();
 	}
 }

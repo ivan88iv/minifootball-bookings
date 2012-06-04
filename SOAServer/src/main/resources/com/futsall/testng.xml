@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="SOATestSuite" verbose="1" >
+  <test name="PlayGroundsServiceTest" >
+    <classes>
+       <class name="com.futsall.service.playground.PlayGroundsServiceTest" />
+    </classes>
+  </test>
+  <test name="ScheduleTests">
+    <classes>
+      <class name="com.futsall.service.schedule.ReservationServiceTest"/>
+      <class name="com.futsall.service.schedule.ScheduleServiceTest"/>
+    </classes>
+  </test>
+  <test name="LoginTest">
+    <classes>
+      <class name="com.futsall.service.login.LoginServiceTest"/>
+    </classes>
+  </test>
+  <test name="RegistrationTest">
+    <classes>
+      <class name="com.futsall.service.register.RegistrationServiceTest"/>
+    </classes>
+  </test>
+</suite>

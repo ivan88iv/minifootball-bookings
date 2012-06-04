@@ -82,12 +82,13 @@ VALUES(1,'MG 1','str. Ar. Kostencev 1','(+359)882233221','valdano@abv.bg',6.5,20
 
 
 INSERT INTO userProfile(userName,pass,firstName,lastName,email)
-VALUES('soko','�A"!%�d�팃�c���߹��b,�6�','Stanimir','Ivanov','stan79@abv.bg'),
-('ruskoff','�A"!%�d�팃�c���߹��b,�6�','Petyr','Ruskoff','ruskoff@abv.bg');
+VALUES('soko','A"!%d?c?b,6','Stanimir','Ivanov','stan79@abv.bg'),
+('ruskoff','A"!%d?c?b,6','Petyr','Ruskoff','ruskoff@abv.bg');
 
 
 INSERT INTO reserved(userId,playGroundId,startTime,endTime)
 VALUES(1,1,'2012-02-22 14-00-00','2012-02-22 15-00-00'),
+(1,1,'2012-06-22 14-00-00','2012-06-23 15-00-00'),
 (1,2,'2012-04-21 14-00-00','2012-04-21 15-00-00'),
 (2,4,'2012-03-2 17-00-00','2012-03-2 18-00-00'),
 (2,4,'2012-03-21 18-00-00','2012-03-21 19-00-00');

@@ -22,6 +22,10 @@ public class ScheduleService {
 	
 	private static final Logger LOGGER = Logger.getLogger(ReservationService.class.getName());
 	
+	public DBManager getDbManager() {
+		return dbManager;
+	}
+	
 	/**
 	 * The method extracts the schedule about a given day and playground
 	 * 

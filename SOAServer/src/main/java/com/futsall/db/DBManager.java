@@ -79,7 +79,7 @@ public class DBManager {
 			"FROM minifootball.reserved r "+
 			"INNER JOIN minifootball.playGround p ON p.id = r.playGroundId "+
 			"INNER JOIN minifootball.userprofile u ON u.id = r.userId "+
-			"WHERE r.startTime LIKE CONCAT(?,'%') and p.id=? "+
+			"WHERE (r.startTime LIKE CONCAT(?,'%') OR r.endTime LIKE CONCAT(?,'%')) and p.id=? "+
 			"ORDER BY r.startTime";
 
 	private static final String SELECT_ALL_COUNTRIES = 
@@ -178,7 +178,8 @@ public class DBManager {
 			DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String formatedDate = sdf.format(inDate.getTime());
 			preparedStatement.setString(1, formatedDate);
-			preparedStatement.setInt(2, inPlayGroundId);
+			preparedStatement.setString(2, formatedDate);
+			preparedStatement.setInt(3, inPlayGroundId);
 			resultSet = preparedStatement.executeQuery();
 			readSchedules(schedules,inPlayGroundId);
 			resultList.setSchedules(schedules);
