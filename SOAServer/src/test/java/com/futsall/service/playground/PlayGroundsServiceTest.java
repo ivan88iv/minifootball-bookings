@@ -89,7 +89,6 @@ public class PlayGroundsServiceTest {
 	public void setUpInitialDbState() throws ClassNotFoundException,
 			SQLException, IOException {
 		LOGGER.log(Level.INFO,"=============================================================");
-		LOGGER.log(Level.INFO, "TestPlayGroundsService#beforeClass() started");
 		// load playgrounds from properties file
 		playGrounds = new ArrayList<>();
 
@@ -113,7 +112,6 @@ public class PlayGroundsServiceTest {
 		// manage connections and statements
 		connection = service.getDbManager().getConnection();
 		stmnt = connection.createStatement();
-		LOGGER.log(Level.INFO, "TestPlayGroundsService#beforeClass() ended");
 		LOGGER.log(Level.INFO,"=============================================================");
 	}
 
@@ -138,14 +136,12 @@ public class PlayGroundsServiceTest {
 	@Test(groups = { "countryTest", "playgroundServices" })
 	public void testAllCountriesExtraction() throws SQLException {
 		LOGGER.log(Level.INFO,"=============================================================");
-		LOGGER.log(Level.INFO,
-				"TestPlayGroundsService#testAllCountriesExtraction() started");
+
 		resultSet = stmnt.executeQuery(SELECT_ALL_DISTINCT_COUNTRIES_STMNT);
 		List<String> allCountries = readStringEntities(resultSet);
 
 		checkStringEntitiesEquality(allCountries, countries);
-		LOGGER.log(Level.INFO,
-				"TestPlayGroundsService#testAllCountriesExtraction() ended");
+
 		LOGGER.log(Level.INFO,"=============================================================");
 	}
 
@@ -161,8 +157,7 @@ public class PlayGroundsServiceTest {
 			"countryTest", "playgroundServices" })
 	public void testNewAddingNewCountries() throws SQLException {
 		LOGGER.log(Level.INFO,"=============================================================");
-		LOGGER.log(Level.INFO,
-				"TestPlayGroundsService#testNewAddingNewCountries() started");
+
 		connection.setAutoCommit(false);
 		temporaryInsertCompany(true);
 
@@ -189,8 +184,6 @@ public class PlayGroundsServiceTest {
 		newCountries = service.getCountries().getCountries();
 
 		checkStringEntitiesEquality(newCountries, countries);
-		LOGGER.log(Level.INFO,
-				"TestPlayGroundsService#testNewAddingNewCountries() started");
 		LOGGER.log(Level.INFO,"=============================================================");
 	}
 
@@ -212,9 +205,6 @@ public class PlayGroundsServiceTest {
 	public void testNonExistingCountry(String nonExistingCountry,
 			String existingCountry) throws SQLException {
 		LOGGER.log(Level.INFO,"=============================================================");
-		LOGGER.log(Level.INFO,
-				"TestPlayGroundsService#testNonExistingCountry(String nonExistingCountry,"
-						+ "String existingCountry) started");
 		// check the server response
 		assertCountriesExistance(nonExistingCountry, existingCountry, countries);
 		connection.setAutoCommit(false);
@@ -230,9 +220,6 @@ public class PlayGroundsServiceTest {
 			connection.rollback();
 			connection.setAutoCommit(false);
 		}
-		LOGGER.log(Level.INFO,
-				"TestPlayGroundsService#testNonExistingCountry(String nonExistingCountry,"
-						+ "String existingCountry) ended");
 		LOGGER.log(Level.INFO,"=============================================================");
 	}
 
@@ -247,16 +234,12 @@ public class PlayGroundsServiceTest {
 			"playgroundServices" }, dependsOnGroups = { "countryTest" })
 	public void testCitiesInDB(String country) throws SQLException {
 		LOGGER.log(Level.INFO,"=============================================================");
-		LOGGER.log(Level.INFO,
-				"TestPlayGroundsService# testCitiesInDB(String country) started");
 		List<String> countriesForCurrentCity = readStringEntities(stmnt
 				.executeQuery(SELECT_ALL_CITIES + "\'" + country + "\'"));
 		// call the service for the current country
 		List<String> citiesByService = service.getCities(country).getCities();
 
 		checkStringEntitiesEquality(countriesForCurrentCity, citiesByService);
-		LOGGER.log(Level.INFO,
-				"TestPlayGroundsService# testCitiesInDB(String country) ended");
 		LOGGER.log(Level.INFO,"=============================================================");
 	}
 
@@ -272,8 +255,6 @@ public class PlayGroundsServiceTest {
 			"playgroundServices" }, dependsOnMethods = { "testCitiesInDB", })
 	public void testNewCities() throws SQLException {
 		LOGGER.log(Level.INFO,"=============================================================");
-		LOGGER.log(Level.INFO,
-				"TestPlayGroundsService# testNewCities() started");
 		connection.setAutoCommit(false);
 		temporaryInsertCompany(true);
 
@@ -286,7 +267,6 @@ public class PlayGroundsServiceTest {
 		// roll the changes to the database back
 		connection.rollback();
 		connection.setAutoCommit(true);
-		LOGGER.log(Level.INFO, "TestPlayGroundsService# testNewCities() ended");
 		LOGGER.log(Level.INFO,"=============================================================");
 	}
 
@@ -305,9 +285,6 @@ public class PlayGroundsServiceTest {
 	public void testCitiesExistance(String nonExistingCity, String existingCity)
 			throws SQLException {
 		LOGGER.log(Level.INFO,"=============================================================");
-		LOGGER.log(
-				Level.INFO,
-				"TestPlayGroundsService#testCitiesExistance(String nonExistingCity,String existingCity) started");
 		assertCitiesExistence(nonExistingCity, existingCity, countries);
 
 		connection.setAutoCommit(false);
@@ -323,9 +300,6 @@ public class PlayGroundsServiceTest {
 			connection.rollback();
 			connection.setAutoCommit(false);
 		}
-		LOGGER.log(
-				Level.INFO,
-				"TestPlayGroundsService#testCitiesExistance(String nonExistingCity,String existingCity) ended");
 		LOGGER.log(Level.INFO,"=============================================================");
 	}
 
@@ -343,9 +317,6 @@ public class PlayGroundsServiceTest {
 	public void testAllPlayGrounds(String country, String city)
 			throws SQLException {
 		LOGGER.log(Level.INFO,"=============================================================");
-		LOGGER.log(
-				Level.INFO,
-				"TestPlayGroundsService#testAllPlayGrounds(String country, String city) started");
 		// get playgrounds from the database
 		PreparedStatement pst = connection
 				.prepareStatement(SELECT_ALL_PLAYGROUNDS);
@@ -360,9 +331,6 @@ public class PlayGroundsServiceTest {
 		// check if playgrounds from the database are equal to those from the
 		// service
 		checkStringEntitiesEquality(dbPlaygrounds, servicePlaygroundsNames);
-		LOGGER.log(
-				Level.INFO,
-				"TestPlayGroundsService#testAllPlayGrounds(String country, String city) ended");
 		LOGGER.log(Level.INFO,"=============================================================");
 	}
 
@@ -375,8 +343,6 @@ public class PlayGroundsServiceTest {
 	@Test(groups = { "playgroundServices" }, dependsOnGroups = { "cityTest" }, dependsOnMethods = { "testAllPlayGrounds" })
 	public void testNewPlaygrounds() throws SQLException {
 		LOGGER.log(Level.INFO,"=============================================================");
-		LOGGER.log(Level.INFO,
-				"TestPlayGroundsService#testNewPlaygrounds() started");
 		connection.setAutoCommit(false);
 		// add the new company
 		temporaryInsertCompany(true);
@@ -396,8 +362,6 @@ public class PlayGroundsServiceTest {
 		// roll the changes to the database back
 		connection.rollback();
 		connection.setAutoCommit(true);
-		LOGGER.log(Level.INFO,
-				"TestPlayGroundsService#testNewPlaygrounds() ended");
 		LOGGER.log(Level.INFO,"=============================================================");
 	}
 
@@ -415,10 +379,6 @@ public class PlayGroundsServiceTest {
 	public void testUpdatedPlayground(String existingPlayground,
 			String nonExistingPlayground) throws SQLException {
 		LOGGER.log(Level.INFO,"=============================================================");
-		LOGGER.log(
-				Level.INFO,
-				"TestPlayGroundsService#testUpdatedPlayground(String existingPlayground,"
-				+"String nonExistingPlayground) started");
 		// check the initial state in the database and in the service response
 		assertPlaygroundsExistence(nonExistingPlayground, existingPlayground,
 				countries);
@@ -438,10 +398,6 @@ public class PlayGroundsServiceTest {
 			connection.rollback();
 			connection.setAutoCommit(false);
 		}
-		LOGGER.log(
-				Level.INFO,
-				"TestPlayGroundsService#testUpdatedPlayground(String existingPlayground,"
-				+"String nonExistingPlayground) ended");
 		LOGGER.log(Level.INFO,"=============================================================");
 	}
 
